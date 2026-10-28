@@ -19,4 +19,13 @@ class TeamMember extends Model
     {
         return $this->belongsTo(Team::class, 'team_id');
     }
+
+    public function pengguna(): BelongsTo
+    {
+        return $this->belongsTo(
+            Pengguna::class,
+            'user_id',
+            'id_pengguna'
+        );
+    }
 }

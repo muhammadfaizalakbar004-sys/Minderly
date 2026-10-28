@@ -7,6 +7,9 @@ use App\Http\Controllers\TugasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KuesionerController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TeamChatController;
+use App\Http\Controllers\ProyekController;
+use App\Http\Controllers\AutoTeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,4 +94,47 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/teams', [TeamController::class, 'store'])
         ->name('teams.store');
+
+Route::get('/teams/{team}', [TeamController::class, 'show'])
+    ->name('teams.show');
+
+Route::post('/teams/{team}/members', [TeamController::class, 'addMember'])
+    ->name('teams.members.store');
+
+Route::post('/teams/{team}/invite', [TeamController::class, 'generateInvite'])
+    ->name('teams.invite.generate');
+
+Route::get('/teams/invite/{token}', [TeamController::class, 'joinByInvite'])
+    ->name('teams.invite.join');
+
+Route::get('/teams/{team}/chat', [TeamChatController::class, 'index'])
+    ->name('teams.chat.index');
+
+Route::post('/teams/{team}/chat', [TeamChatController::class, 'store'])
+    ->name('teams.chat.store');
+
+    // Route khusus admin untuk pengelolaan proyek
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+        Route::get('/proyek', [ProyekController::class, 'index'])
+            ->name('proyek.index');
+
+        Route::get('/proyek/tambah', [ProyekController::class, 'create'])
+            ->name('proyek.create');
+
+        Route::post('/proyek', [ProyekController::class, 'store'])
+            ->name('proyek.store');
+
+        Route::get('/proyek/{proyek}', [ProyekController::class, 'show'])
+            ->name('proyek.show');
+
+        Route::post('/bagi-tim-otomatis', [AutoTeamController::class, 'assign'])
+            ->name('tim.assign');
+    });
+
+
+
 });

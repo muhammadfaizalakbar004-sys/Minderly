@@ -39,21 +39,15 @@
                 <span class="text-sm">Dashboard</span>
             </a>
 
-            
-            <a href="/tugas" class="flex items-center gap-3 px-3 py-3 rounded-xl text-blue-100 hover:bg-white/10 hover:text-white transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                     <path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 5h6M9 9h6M9 13h6M5 5h.01M5 9h.01M5 13h.01"/>
-                 </svg>
-                <span class="text-sm">Manajemen Tugas</span>
-            </a>
-
-            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl text-blue-100 hover:bg-white/10 hover:text-white transition">
-            <a href="/tugas" class="flex items-center gap-3 px-3 py-3 rounded-xl bg-white text-[#064B87] font-semibold shadow-sm transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 5h6M9 9h6M9 13h6M5 5h.01M5 9h.01M5 13h.01"/>
-                </svg>
-                <span class="text-sm">Manajemen Tugas</span>
-            </a>
+                <a href="{{ route('tugas.index') }}"
+                class="flex items-center gap-3 px-3 py-3 rounded-xl text-blue-100 hover:bg-white/10 hover:text-white transition">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-width="1.8" stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M9 5h6M9 9h6M9 13h6M5 5h.01M5 9h.01M5 13h.01"/>
+                    </svg>
+                    <span class="text-sm">Manajemen Tugas</span>
+                </a>
 
             <a href="{{ route('teams.index') }}" class="flex items-center gap-3 px-3 py-3 rounded-xl text-blue-100 hover:bg-white/10 hover:text-white transition">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -96,12 +90,20 @@
                 <span class="text-sm">Riwayat Aktivitas</span>
             </a>
 
-            <a href="#" class="flex items-center gap-3 px-3 py-3 rounded-xl text-red-200 hover:bg-red-500/20 hover:text-white transition">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"/>
-                </svg>
-                <span class="text-sm">Log Out</span>
-            </a>
+
+<form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit"
+        class="w-full flex items-center gap-3 px-3 py-3 rounded-xl text-red-200 hover:bg-red-500/20 hover:text-white transition text-left">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h6a2 2 0 012 2v1"/>
+        </svg>
+        <span class="text-sm">Log Out</span>
+    </button>
+</form>
+
         </div>
 
         <div class="mt-auto pt-8 px-3">
@@ -124,7 +126,7 @@
             </div>
 
             <div class="flex items-center gap-4">
-        
+
 <form action="{{ url('/tugas') }}" method="GET"
     class="relative hidden sm:block">
 

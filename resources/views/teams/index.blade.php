@@ -15,7 +15,7 @@
             </p>
         </div>
 
-        
+
 
 <a href="{{ route('teams.create') }}"
    class="inline-flex items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white transition hover:bg-blue-700">
@@ -92,11 +92,14 @@
                                 {{ $loop->iteration }}
                             </td>
 
-                            <td class="px-6 py-4">
-                                <span class="font-semibold text-gray-800">
-                                    {{ $team->name }}
-                                </span>
-                            </td>
+
+<td class="px-6 py-4">
+    <a href="{{ route('teams.show', $team->id) }}"
+       class="font-semibold text-blue-600 hover:text-blue-800">
+        {{ $team->name }}
+    </a>
+</td>
+
 
                             <td class="px-6 py-4 text-sm text-gray-600">
                                 {{ $team->description ?: 'Belum ada deskripsi' }}
