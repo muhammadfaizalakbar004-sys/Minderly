@@ -1,11 +1,12 @@
+
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KuesionerController;
+use App\Http\Controllers\TeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,4 +81,14 @@ Route::middleware('auth')->group(function () {
         Route::delete('/hapus/{id}', [TugasController::class, 'destroy'])
             ->name('destroy');
     });
+
+    // Kolaborasi tim
+    Route::get('/teams', [TeamController::class, 'index'])
+        ->name('teams.index');
+
+    Route::get('/teams/create', [TeamController::class, 'create'])
+        ->name('teams.create');
+
+    Route::post('/teams', [TeamController::class, 'store'])
+        ->name('teams.store');
 });
